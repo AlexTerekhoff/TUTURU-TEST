@@ -53,7 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let jsonDictionary = try JSONSerialization.jsonObject(with: data) as! Dictionary< String, Array <Dictionary<String, AnyObject>>>
             
-            
             let citiesFrom = jsonDictionary["citiesFrom"]
             let citiesTo = jsonDictionary["citiesTo"]
             

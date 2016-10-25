@@ -23,7 +23,7 @@
 /* Begin PBXBuildFile section */
 		11247C371DBF577E00557851 /* StationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11247C361DBF577E00557851 /* StationTableViewController.swift */; };
 		11247C3A1DBF5CE600557851 /* allStations.json in Resources */ = {isa = PBXBuildFile; fileRef = 11247C391DBF5CE600557851 /* allStations.json */; };
-		11247C431DBFB9DF00557851 /* timetable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11C4A6F21DBE69F500DB103A /* timetable.xcdatamodeld */; };
+		11247C4D1DBFD4BE00557851 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11247C4B1DBFD4BE00557851 /* Model.xcdatamodeld */; };
 		11C4A6EC1DBE69F500DB103A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C4A6EB1DBE69F500DB103A /* AppDelegate.swift */; };
 		11C4A6F11DBE69F500DB103A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C4A6EF1DBE69F500DB103A /* Main.storyboard */; };
 		11C4A6F61DBE69F500DB103A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C4A6F51DBE69F500DB103A /* Assets.xcassets */; };
@@ -33,10 +33,10 @@
 /* Begin PBXFileReference section */
 		11247C361DBF577E00557851 /* StationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewController.swift; sourceTree = "<group>"; };
 		11247C391DBF5CE600557851 /* allStations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = allStations.json; sourceTree = "<group>"; };
+		11247C4C1DBFD4BE00557851 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		11C4A6E81DBE69F500DB103A /* timetable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timetable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C4A6EB1DBE69F500DB103A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11C4A6F01DBE69F500DB103A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		11C4A6F31DBE69F500DB103A /* timetable.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = timetable.xcdatamodel; sourceTree = "<group>"; };
 		11C4A6F51DBE69F500DB103A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11C4A6F81DBE69F500DB103A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11C4A6FA1DBE69F500DB103A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		11247C481DBFD17400557851 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				11C4A6F21DBE69F500DB103A /* timetable.xcdatamodeld */,
+				11247C4B1DBFD4BE00557851 /* Model.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -243,7 +243,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mogenerator --swift --model ${PROJECT_DIR}/timetable/Sources/CoreData/Model/timetable.xcdatamodeld/timetable.xcdatamodel --machine-dir ${PROJECT_DIR}/timetable/Sources/CoreData/Generated --human-dir ${PROJECT_DIR}/timetable/Sources/CoreData/Editable";
+			shellScript = "mogenerator --swift --model ${PROJECT_DIR}/timetable/Sources/CoreData/Model/Model.xcdatamodeld/Model.xcdatamodel --machine-dir ${PROJECT_DIR}/timetable/Sources/CoreData/Generated --human-dir ${PROJECT_DIR}/timetable/Sources/CoreData/Editable";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -252,9 +252,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11247C431DBFB9DF00557851 /* timetable.xcdatamodeld in Sources */,
 				11247C371DBF577E00557851 /* StationTableViewController.swift in Sources */,
 				11C4A6EC1DBE69F500DB103A /* AppDelegate.swift in Sources */,
+				11247C4D1DBFD4BE00557851 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,13 +447,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		11C4A6F21DBE69F500DB103A /* timetable.xcdatamodeld */ = {
+		11247C4B1DBFD4BE00557851 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				11C4A6F31DBE69F500DB103A /* timetable.xcdatamodel */,
+				11247C4C1DBFD4BE00557851 /* Model.xcdatamodel */,
 			);
-			currentVersion = 11C4A6F31DBE69F500DB103A /* timetable.xcdatamodel */;
-			path = timetable.xcdatamodeld;
+			currentVersion = 11247C4C1DBFD4BE00557851 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
