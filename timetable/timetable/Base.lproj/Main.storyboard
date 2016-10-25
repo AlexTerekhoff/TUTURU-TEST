@@ -39,6 +39,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="IK9-AB-dmO"/>
+                    <connections>
+                        <outlet property="tableView" destination="i0H-r0-TqZ" id="uwP-e9-aAP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7c6-y4-lLL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

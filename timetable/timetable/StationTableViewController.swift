@@ -11,11 +11,15 @@ import UIKit
 
 class StationTableViewController : UIViewController, UITableViewDataSource, UITableViewDelegate
 {
-    let stattionCellId = "StationCell";
+
+    @IBOutlet var tableView: UITableView!
+    let stattionCellId: String = "StationCell";
+    
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: stattionCellId)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int
@@ -34,7 +38,6 @@ class StationTableViewController : UIViewController, UITableViewDataSource, UITa
                                                             for: indexPath)
         
         cell.textLabel?.text = "Section \(indexPath.section) Row \(indexPath.row)";
-
         return cell
     }
     
