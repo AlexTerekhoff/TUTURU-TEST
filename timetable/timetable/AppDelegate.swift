@@ -43,7 +43,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
-
+    
+    func uploadData ()
+    {
+        let url = Bundle.main.url(forResource: "allStations", withExtension: "json")
+        do
+        {
+            let data = try Data.init(contentsOf: url!)
+            
+            let jsonDictionary = try JSONSerialization.jsonObject(with: data) as! Dictionary< String, Array <Dictionary<String, AnyObject>>>
+            
+            
+            let citiesFrom = jsonDictionary["citiesFrom"]
+            let citiesTo = jsonDictionary["citiesTo"]
+            
+        }
+        catch
+        {
+            fatalError("Error in uploading data");
+        }
+    }
+    
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {
