@@ -425,6 +425,7 @@
 				11247C411DBFB7BF00557851 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		11C4A6E31DBE69F400DB103A /* Build configuration list for PBXProject "timetable" */ = {
 			isa = XCConfigurationList;
