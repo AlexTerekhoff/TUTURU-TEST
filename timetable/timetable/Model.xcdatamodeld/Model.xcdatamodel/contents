@@ -9,19 +9,19 @@
         <relationship name="point" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Point" inverseName="city" inverseEntity="Point" syncable="YES"/>
         <relationship name="stations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Station" inverseName="city" inverseEntity="Station" syncable="YES"/>
     </entity>
-    <entity name="Point" syncable="YES">
+    <entity name="Point" representedClassName=".Point" syncable="YES">
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="point" inverseEntity="City" syncable="YES"/>
     </entity>
-    <entity name="Station" syncable="YES">
+    <entity name="Station" representedClassName=".Station" syncable="YES">
         <attribute name="stationId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="stationTitle" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="stations" inverseEntity="City" syncable="YES"/>
     </entity>
     <elements>
         <element name="City" positionX="-677" positionY="-778" width="128" height="148"/>
-        <element name="Point" positionX="-495" positionY="-720" width="128" height="88"/>
-        <element name="Station" positionX="-846" positionY="-691" width="128" height="88"/>
+        <element name="Point" positionX="-495" positionY="-720" width="128" height="28"/>
+        <element name="Station" positionX="-846" positionY="-691" width="128" height="28"/>
     </elements>
 </model>
