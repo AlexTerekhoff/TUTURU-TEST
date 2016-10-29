@@ -28,5 +28,15 @@ class DataController: NSObject
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = psc
+        
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let docURL = urls[urls.endIndex-1]
+      
+        let storeURL = docURL.appendingPathComponent("DataModel.sqlite")
+        do {
+            try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
+        } catch {
+            fatalError("Error migrating store: \(error)")
+        }
     }
 }

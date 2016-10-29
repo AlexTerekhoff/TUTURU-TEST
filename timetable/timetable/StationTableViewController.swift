@@ -13,25 +13,23 @@ import CoreData
 class StationTableViewController : UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     let stattionCellId: String = "StationCell"
-    var cities:Array<City> = Array<City>.init()
+    var cities = Array<City>.init()
+    var dataController:DataController?
     
     @IBOutlet var tableView: UITableView!
-    
-    var dataController = DataController.init()
     
     func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
-        cities = fetchCities()
     }
     
     func fetchCities () -> Array<City>
     {
-        var cities: Array = Array<City>.init()
+        var cities = Array<City>.init()
         let citiesFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
         do
         {
-            cities = try dataController.managedObjectContext.fetch(citiesFetchRequest) as! [City]
+            cities = try dataController!.managedObjectContext.fetch(citiesFetchRequest) as! [City]
         }
         catch
         {
@@ -44,8 +42,47 @@ class StationTableViewController : UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        dataController = DataController.init()
+        uploadData ()
+        cities = fetchCities()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: stattionCellId)
+        
     }
+    
+    func uploadData ()
+    {
+        let url = Bundle.main.url(forResource: "allStations", withExtension: "json")
+        do
+        {
+            let data = try Data.init(contentsOf: url!)
+            
+            let jsonDictionary = try JSONSerialization.jsonObject(with: data) as! Dictionary< String, Array <Dictionary<String, AnyObject>>>
+            
+            let citiesFrom = jsonDictionary["citiesFrom"]
+            
+            for city in citiesFrom!
+            {
+                let title = city["cityTitle"] as! String
+                let entity = NSEntityDescription.insertNewObject(forEntityName: "City",
+                                                                 into: dataController!.managedObjectContext)
+                entity.setValue(title, forKey: "cityTitle")
+                
+                do
+                {
+                    try dataController!.managedObjectContext.save()
+                }
+                catch
+                {
+                    fatalError("Failure to save context: \(error)")
+                }
+            }
+        }
+        catch
+        {
+            fatalError("Error in uploading data");
+        }
+    }
+
     
     func numberOfSections(in tableView: UITableView) -> Int
     {
