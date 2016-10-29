@@ -10,6 +10,8 @@ import Foundation
 import CoreData
 
 
-public class Station: NSManagedObject {
-
+public class Station: NSManagedObject
+{
+    let stattionCellId: String = "StationCell"
 }
+

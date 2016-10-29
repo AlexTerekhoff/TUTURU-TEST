@@ -8,13 +8,38 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class StationTableViewController : UIViewController, UITableViewDataSource, UITableViewDelegate
 {
-
-    @IBOutlet var tableView: UITableView!
-    let stattionCellId: String = "StationCell";
+    let stattionCellId: String = "StationCell"
+    var cities:Array<City> = Array<City>.init()
     
+    @IBOutlet var tableView: UITableView!
+    
+    var dataController = DataController.init()
+    
+    func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        cities = fetchCities()
+    }
+    
+    func fetchCities () -> Array<City>
+    {
+        var cities: Array = Array<City>.init()
+        let citiesFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
+        do
+        {
+            cities = try dataController.managedObjectContext.fetch(citiesFetchRequest) as! [City]
+        }
+        catch
+        {
+            fatalError("Failed to fetch cities: \(error)")
+        }
+
+        return cities
+    }
     
     override func viewDidLoad()
     {
@@ -24,21 +49,24 @@ class StationTableViewController : UIViewController, UITableViewDataSource, UITa
     
     func numberOfSections(in tableView: UITableView) -> Int
     {
-        return 3;
+        return 1;
     }
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    public func tableView(_ tableView: UITableView,
+        numberOfRowsInSection section: Int) -> Int
     {
-        return 5;
+        return cities.count;
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: stattionCellId,
-                                                            for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: stattionCellId) as
+            UITableViewCell!
+                                                 
+        let city = cities[indexPath.row]
         
-        cell.textLabel?.text = "Section \(indexPath.section) Row \(indexPath.row)";
-        return cell
+        cell!.textLabel!.text = city.value(forKey:"cityTitle") as? String;
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?

@@ -2,7 +2,7 @@
 //  Point+CoreDataProperties.swift
 //  timetable
 //
-//  Created by Alexander on 28/10/2016.
+//  Created by Alexander on 29/10/2016.
 //  Copyright © 2016 Alexander Terekhov. All rights reserved.
 //
 
