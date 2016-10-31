@@ -2,12 +2,13 @@
 //  City+CoreDataProperties.swift
 //  timetable
 //
-//  Created by Alexander on 29/10/2016.
+//  Created by Alexander on 31/10/2016.
 //  Copyright © 2016 Alexander Terekhov. All rights reserved.
 //
 
 import Foundation
 import CoreData
+import timetable
 
 extension City {
 
@@ -15,11 +16,11 @@ extension City {
         return NSFetchRequest<City>(entityName: "City");
     }
 
-    @NSManaged public var countryTitle: String?
-    @NSManaged public var districtTitle: String?
-    @NSManaged public var cityId: Int64
-    @NSManaged public var cityTitle: String?
-    @NSManaged public var regionTitle: String?
+    @NSManaged public var id: Int64
+    @NSManaged public var name: String?
+    @NSManaged public var country: String?
+    @NSManaged public var district: String?
+    @NSManaged public var region: String?
     @NSManaged public var point: Point?
     @NSManaged public var stations: NSSet?
 

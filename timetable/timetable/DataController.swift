@@ -29,7 +29,7 @@ class DataController: NSObject
     
     func createStoreCoordinator() -> NSPersistentStoreCoordinator
     {
-        guard let modelURL = Bundle.main.url(forResource: "Model",
+        guard let modelURL = Bundle.main.url(forResource:"Model",
                                           withExtension:"momd") else
         {
             fatalError("Error loading model from bundle")
@@ -48,7 +48,7 @@ class DataController: NSObject
     {
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let docURL = urls[urls.endIndex-1]
-        let storeURL = docURL.appendingPathComponent("DataModel.sqlite")
+        let storeURL = docURL.appendingPathComponent("Model.sqlite")
         do
         {
             try coordinator.addPersistentStore(ofType: NSSQLiteStoreType,

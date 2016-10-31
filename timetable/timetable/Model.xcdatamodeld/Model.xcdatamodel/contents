@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="City" representedClassName="timetable.City" syncable="YES">
-        <attribute name="cityId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="cityTitle" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="countryTitle" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="districtTitle" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="regionTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="district" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="region" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="point" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Point" inverseName="city" inverseEntity="Point" syncable="YES"/>
         <relationship name="stations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Station" inverseName="city" inverseEntity="Station" syncable="YES"/>
     </entity>
@@ -15,13 +15,13 @@
         <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="point" inverseEntity="City" syncable="YES"/>
     </entity>
     <entity name="Station" representedClassName="timetable.Station" syncable="YES">
-        <attribute name="stationId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="stationTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="stations" inverseEntity="City" syncable="YES"/>
     </entity>
     <elements>
         <element name="City" positionX="-434" positionY="-634" width="128" height="148"/>
-        <element name="Point" positionX="-281" positionY="-576" width="128" height="58"/>
-        <element name="Station" positionX="-659" positionY="-571" width="128" height="58"/>
+        <element name="Point" positionX="-270" positionY="-529" width="128" height="88"/>
+        <element name="Station" positionX="-621" positionY="-511" width="128" height="88"/>
     </elements>
 </model>

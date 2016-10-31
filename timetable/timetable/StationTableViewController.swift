@@ -17,10 +17,10 @@ class StationTableViewController : UIViewController, UITableViewDataSource, UITa
    
     public func updateSearchResults(for searchController: UISearchController)
     {
-         let searchText = searchController.searchBar.text!
-         let searchPredicate = NSPredicate.init(format:"message CONTAINS[c] %@", searchText)
-        
-         let filteredStations = self.cities.filter { searchPredicate.evaluate(with:($0))} as! Array<City>
+//         let searchText = searchController.searchBar.text!
+//         let searchPredicate = NSPredicate.init(format:"message CONTAINS[c] %@", searchText)
+//        
+//         let filteredStations = self.cities.filter { searchPredicate.evaluate(with:($0))} as! Array<City>
     }
     
     var filteredCities = [City]()
@@ -83,7 +83,7 @@ class StationTableViewController : UIViewController, UITableViewDataSource, UITa
                 let title = city["cityTitle"] as! String
                 let entity = NSEntityDescription.insertNewObject(forEntityName: "City",
                                                                  into: dataController!.managedObjectContext!)
-                entity.setValue(title, forKey: "cityTitle")
+                entity.setValue(title, forKey: "name")
                 
                 do
                 {
@@ -120,7 +120,7 @@ class StationTableViewController : UIViewController, UITableViewDataSource, UITa
                                                  
         let city = cities[indexPath.row]
         
-        cell!.textLabel!.text = city.value(forKey:"cityTitle") as? String;
+        cell!.textLabel!.text = city.value(forKey:"name") as? String;
         return cell!
     }
     
