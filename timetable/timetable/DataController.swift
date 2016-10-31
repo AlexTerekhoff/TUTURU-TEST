@@ -11,31 +11,53 @@ import CoreData
 
 class DataController: NSObject
 {
-    var managedObjectContext: NSManagedObjectContext
+    var managedObjectContext: NSManagedObjectContext?
     
     override init()
     {
-        guard let modelURL = Bundle.main.url(forResource: "Model", withExtension:"momd") else
+        super.init()
+        setup()
+    }
+    
+    func setup()
+    {
+        managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        let storeCoordinator = createStoreCoordinator()
+        managedObjectContext!.persistentStoreCoordinator = storeCoordinator
+        setupStoreForStoreCoordinator(coordinator: storeCoordinator)
+    }
+    
+    func createStoreCoordinator() -> NSPersistentStoreCoordinator
+    {
+        guard let modelURL = Bundle.main.url(forResource: "Model",
+                                          withExtension:"momd") else
         {
             fatalError("Error loading model from bundle")
         }
-     
+        
         guard let mom = NSManagedObjectModel(contentsOf: modelURL) else
         {
             fatalError("Error initializing mom from: \(modelURL)")
         }
         
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
-        managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        managedObjectContext.persistentStoreCoordinator = psc
-        
+        return psc
+    }
+    
+    func setupStoreForStoreCoordinator(coordinator: NSPersistentStoreCoordinator)
+    {
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let docURL = urls[urls.endIndex-1]
-      
         let storeURL = docURL.appendingPathComponent("DataModel.sqlite")
-        do {
-            try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
-        } catch {
+        do
+        {
+            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType,
+                                   configurationName: nil,
+                                                  at: storeURL,
+                                             options: nil)
+        }
+        catch
+        {
             fatalError("Error migrating store: \(error)")
         }
     }

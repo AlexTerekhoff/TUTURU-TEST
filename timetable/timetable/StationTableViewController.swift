@@ -13,6 +13,7 @@ import CoreData
 class StationTableViewController : UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     let stattionCellId: String = "StationCell"
+    
     var cities = Array<City>.init()
     var dataController:DataController?
     
@@ -29,7 +30,7 @@ class StationTableViewController : UIViewController, UITableViewDataSource, UITa
         let citiesFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
         do
         {
-            cities = try dataController!.managedObjectContext.fetch(citiesFetchRequest) as! [City]
+            cities = try dataController!.managedObjectContext?.fetch(citiesFetchRequest) as! [City]
         }
         catch
         {
@@ -64,12 +65,12 @@ class StationTableViewController : UIViewController, UITableViewDataSource, UITa
             {
                 let title = city["cityTitle"] as! String
                 let entity = NSEntityDescription.insertNewObject(forEntityName: "City",
-                                                                 into: dataController!.managedObjectContext)
+                                                                 into: dataController!.managedObjectContext!)
                 entity.setValue(title, forKey: "cityTitle")
                 
                 do
                 {
-                    try dataController!.managedObjectContext.save()
+                    try dataController!.managedObjectContext!.save()
                 }
                 catch
                 {
