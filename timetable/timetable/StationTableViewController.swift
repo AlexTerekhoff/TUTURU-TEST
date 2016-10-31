@@ -10,12 +10,24 @@ import Foundation
 import UIKit
 import CoreData
 
-class StationTableViewController : UIViewController, UITableViewDataSource, UITableViewDelegate
+class StationTableViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating
 {
     let stattionCellId: String = "StationCell"
+    let searchController = UISearchController(searchResultsController: nil)
+   
+    public func updateSearchResults(for searchController: UISearchController)
+    {
+         let searchText = searchController.searchBar.text!
+         let searchPredicate = NSPredicate.init(format:"message CONTAINS[c] %@", searchText)
+        
+         let filteredStations = self.cities.filter { searchPredicate.evaluate(with:($0))} as! Array<City>
+    }
     
+    var filteredCities = [City]()
     var cities = Array<City>.init()
     var dataController:DataController?
+    
+    
     
     @IBOutlet var tableView: UITableView!
     
@@ -47,6 +59,11 @@ class StationTableViewController : UIViewController, UITableViewDataSource, UITa
         uploadData ()
         cities = fetchCities()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: stattionCellId)
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
         
     }
     

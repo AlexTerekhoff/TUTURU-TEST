@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 
-public class City: NSManagedObject {
+public class City: NSManagedObject
+{
 
 }
