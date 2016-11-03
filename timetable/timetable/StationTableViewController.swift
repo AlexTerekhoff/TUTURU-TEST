@@ -26,17 +26,17 @@ class StationTableViewController : UIViewController,
  
     override func viewDidLoad()
     {
+        dataController = DataController.sharedInstance
+        setupFetchedResultsController()
+        fetchData()
         super.viewDidLoad()
         setup()
     }
     
     func setup()
     {
-        dataController = DataController.sharedInstance
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: stattionCellId)
         setupSearchController()
-        setupFetchedResultsController()
-        fetchData()
     }
     
     func setupSearchController()
@@ -63,7 +63,10 @@ class StationTableViewController : UIViewController,
     public func updateSearchResults(for searchController: UISearchController)
     {
         let searchText = searchController.searchBar.text!
-        let searchPredicate = NSPredicate.init(format:"message CONTAINS[c] %@", searchText)
+        let searchPredicate = NSPredicate.init(format:"name contains[c] %@", searchText)
+        fetchedResultsController.fetchRequest.predicate = searchPredicate
+        fetchData()
+        tableView.reloadData()
     }
 
     func fetchData()

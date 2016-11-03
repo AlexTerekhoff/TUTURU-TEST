@@ -50,6 +50,7 @@ class DataController: NSObject
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let docURL = urls[urls.endIndex-1]
         let storeURL = docURL.appendingPathComponent("Model.sqlite")
+        print(storeURL)
         do
         {
             try coordinator.addPersistentStore(ofType: NSSQLiteStoreType,
