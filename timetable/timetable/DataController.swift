@@ -62,4 +62,5 @@ class DataController: NSObject
             fatalError("Error migrating store: \(error)")
         }
     }
+    
 }

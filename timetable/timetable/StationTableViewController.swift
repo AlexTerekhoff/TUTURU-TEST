@@ -10,17 +10,20 @@ import Foundation
 import UIKit
 import CoreData
 
-class StationTableViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating
+class StationTableViewController : UIViewController,
+                                    UITableViewDataSource,
+                                    UITableViewDelegate,
+                                    UISearchResultsUpdating,
+                                    NSFetchedResultsControllerDelegate
 {
+    let stattionCellId = "StationCell"
+    
     @IBOutlet var tableView: UITableView!
     
-    let stattionCellId = "StationCell"
     let searchController = UISearchController(searchResultsController: nil)
-    
+    var fetchedResultsController: NSFetchedResultsController<City>!
     var dataController:DataController?
-    var filteredCities = [City]()
-    var cities = Array<City>.init()
-    
+ 
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -30,9 +33,10 @@ class StationTableViewController : UIViewController, UITableViewDataSource, UITa
     func setup()
     {
         dataController = DataController.sharedInstance
-        cities = fetchCities()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: stattionCellId)
         setupSearchController()
+        setupFetchedResultsController()
+        fetchData()
     }
     
     func setupSearchController()
@@ -42,56 +46,68 @@ class StationTableViewController : UIViewController, UITableViewDataSource, UITa
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
     }
-
-    public func updateSearchResults(for searchController: UISearchController)
+    
+    func setupFetchedResultsController()
     {
-        //         let searchText = searchController.searchBar.text!
-        //         let searchPredicate = NSPredicate.init(format:"message CONTAINS[c] %@", searchText)
-        //
-        //         let filteredStations = self.cities.filter { searchPredicate.evaluate(with:($0))} as! Array<City>
+        let fetchRequest: NSFetchRequest<City> = City.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                    managedObjectContext: dataController!.managedObjectContext!,
+                                                      sectionNameKeyPath: nil,
+                                                               cacheName: nil)
+        fetchedResultsController.delegate = self
     }
     
-
-    func fetchCities () -> Array<City>
+    
+    public func updateSearchResults(for searchController: UISearchController)
     {
-        var cities = Array<City>.init()
-        let citiesFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
+        let searchText = searchController.searchBar.text!
+        let searchPredicate = NSPredicate.init(format:"message CONTAINS[c] %@", searchText)
+    }
+
+    func fetchData()
+    {
         do
         {
-            cities = try dataController!.managedObjectContext?.fetch(citiesFetchRequest) as! [City]
+            try self.fetchedResultsController.performFetch()
         }
         catch
         {
-            fatalError("Failed to fetch cities: \(error)")
+            let fetchError = error as NSError
+            print("\(fetchError), \(fetchError.localizedDescription)")
         }
-
-        return cities
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int
     {
-        return 1;
+        return self.fetchedResultsController.fetchedObjects!.count
     }
     
     public func tableView(_ tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int
     {
-        return cities.count;
+        let cities = self.fetchedResultsController.fetchedObjects!
+        let stations = Array(cities[section].stations!)
+        
+        return stations.count;
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: stattionCellId) as
-            UITableViewCell!
-                                                 
-        let city = cities[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: stattionCellId) as UITableViewCell!
+        let cities = self.fetchedResultsController.fetchedObjects!
+        let stations = Array(cities[indexPath.section].stations!)
+        let station = stations[indexPath.row] as! Station
+        cell!.textLabel!.text = station.name
         
-        cell!.textLabel!.text = city.value(forKey:"name") as? String;
         return cell!
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
-        return "Section \(section)";
+        let cities = self.fetchedResultsController.fetchedObjects!
+        
+        return cities[section].name;
     }
 }

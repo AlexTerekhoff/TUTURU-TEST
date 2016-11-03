@@ -12,6 +12,6 @@ import CoreData
 
 public class Station: NSManagedObject
 {
-    let stattionCellId: String = "StationCell"
+    
 }
 

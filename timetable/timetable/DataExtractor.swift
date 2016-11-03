@@ -13,11 +13,8 @@ class DataExtractor: NSObject
 {
     let citiesFromKey = "citiesFrom"
     let citiesToKey = "citiesTo"
-    let cityKey = "City"
-    let pointKey = "Point"
-    let stationKey = "Station"
     
-    typealias JSONDataType = Dictionary< String, Array <Dictionary<String, AnyObject>>>
+    typealias JSONDataType = Dictionary<String, Array <Dictionary<String, AnyObject>>>
     
     private var dataController:DataController?
     
@@ -32,7 +29,6 @@ class DataExtractor: NSObject
         dataController = DataController.sharedInstance
     }
     
-    ////
     func uploadDataFromJSONDataStore()
     {
         let url = Bundle.main.url(forResource: "allStations",
@@ -41,7 +37,7 @@ class DataExtractor: NSObject
         {
             let data = try Data.init(contentsOf: url!)
             let jsonDictionary = try JSONSerialization.jsonObject(with: data) as! JSONDataType
-            importCitiesFromJSONDictionaryToPersisitentStore(jsonDictionary:jsonDictionary)
+            importDataToPersisitentStore(data:jsonDictionary)
         }
         catch
         {
@@ -49,43 +45,88 @@ class DataExtractor: NSObject
         }
     }
     
-    func importCitiesFromJSONDictionaryToPersisitentStore (jsonDictionary:JSONDataType)
+    func importDataToPersisitentStore(data:JSONDataType)
     {
-        parseCitiesFrom(jsonDictionary:jsonDictionary,
-                        cityKey:citiesFromKey)
+        parseCitiesFrom(jsonDictionary:data,
+                              cityKey:citiesFromKey)
     }
     
-    
     func parseCitiesFrom(jsonDictionary:JSONDataType,
-                         cityKey:String)
+                                cityKey:String)
     {
-        let entityCity = NSEntityDescription.insertNewObject(forEntityName:"City",
-                                                                    into: dataController!.managedObjectContext!)
-//        let entityPoint = NSEntityDescription.insertNewObject(forEntityName:pointKey,
-//                                                                     into: dataController!.managedObjectContext!)
-//        let entityStation = NSEntityDescription.insertNewObject(forEntityName:stationKey,
-//                                                                       into: dataController!.managedObjectContext!)
         let cities = jsonDictionary[cityKey]
         for city in cities!
         {
-            //let id = city["cityId"] as! NSNumber
-            let name = city["cityTitle"] as! String
-//            let country = city["cityTitle"] as! String
-//            let district = city["districtTitle"] as! String
-//            let region = city["regionTitle"] as! String
-            
-            entityCity.setValue(name, forKey:"name")
-//            entityCity.setValue(id, forKey:"id")
-//            entityCity.setValue(country, forKey:"district")
-//            entityCity.setValue(district, forKey:"region")
-//            entityCity.setValue(region, forKey:"country")
-            
-            //parse point
-            //parse stations
+            extractCityPropertiesFrom(cityDictionary:city)
         }
         saveData()
     }
+    
+    func extractCityPropertiesFrom(cityDictionary:Dictionary<String, AnyObject>)
+    {
+        let entityCity = NSEntityDescription.insertNewObject(forEntityName:"City",
+                                                                    into:managedObjectConext())
+        parseCityDataFrom(jsonDictionary:cityDictionary,
+                               toEntity:entityCity)
+        
+        let extractedStations = extractStationsFrom(dictionary:cityDictionary)
+        entityCity.setValue(extractedStations, forKeyPath: "stations")
+    }
+    
+    func parseCityDataFrom(jsonDictionary:Dictionary<String, AnyObject>,
+                                 toEntity:NSManagedObject)
+    {
+        //let id = jsonDictionary["cityId"] as! Int64
+        let name = jsonDictionary["cityTitle"] as! String
+        let country = jsonDictionary["cityTitle"] as! String
+        let district = jsonDictionary["districtTitle"] as! String
+        let region = jsonDictionary["regionTitle"] as! String
+        
+        //toEntity.setValue(id, forKey:"id")
+        toEntity.setValue(name, forKey:"name")
+        toEntity.setValue(country, forKey:"district")
+        toEntity.setValue(district, forKey:"region")
+        toEntity.setValue(region, forKey:"country")
+    }
+    
+    func extractStationsFrom(dictionary:Dictionary<String, AnyObject>) -> Set<Station>
+    {
+        var extractedStations = Set<Station>.init()
+        let stations = dictionary["stations"] as! Array <Dictionary<String, AnyObject>>
+        
+        for station in stations
+        {
+            let entityStation = NSEntityDescription.insertNewObject(forEntityName:"Station",
+                                                                           into: managedObjectConext())
+            parseStationDataFrom(jsonDictionary:station,
+                                      toEntity:entityStation)
+            extractedStations.insert(entityStation as! Station)
+        }
+       
+        return extractedStations
+    }
+    
+    func parseStationDataFrom(jsonDictionary:Dictionary<String, AnyObject>,
+                                    toEntity:NSManagedObject)
+    {
+        let name = jsonDictionary["stationTitle"] as! String
+        //let id = jsonDictionary["stationId"] as! Int64
+        
+        toEntity.setValue(name, forKeyPath: "name")
+        //toEntity.setValue(id, forKeyPath: "id")
+    }
+    
+    func extractPointFrom(dictionary:Dictionary<String, AnyObject>)
+    {
+//        let entityPoint = NSEntityDescription.insertNewObject(forEntityName:"Point",
+//                                                                     into: managedObjectConext())
+    }
 
+    func managedObjectConext() -> NSManagedObjectContext
+    {
+        return dataController!.managedObjectContext!
+    }
+    
     func saveData()
     {
         do
