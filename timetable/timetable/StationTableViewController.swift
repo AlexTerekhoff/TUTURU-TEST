@@ -61,8 +61,16 @@ class StationTableViewController : UIViewController,
     public func updateSearchResults(for searchController: UISearchController)
     {
         let searchText = searchController.searchBar.text!
-        let searchPredicate = NSPredicate.init(format:"name contains[c] %@", searchText)
-        fetchedResultsController.fetchRequest.predicate = searchPredicate
+        if searchController.isActive && searchText != ""
+        {
+            let searchPredicate = NSPredicate.init(format:"name contains[c] %@", searchText)
+            fetchedResultsController.fetchRequest.predicate = searchPredicate
+ 
+        }
+        else
+        {
+            fetchedResultsController.fetchRequest.predicate = nil
+        }
         fetchData()
         tableView.reloadData()
     }
