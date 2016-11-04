@@ -21,7 +21,7 @@ class StationTableViewController : UIViewController,
     @IBOutlet var tableView: UITableView!
     
     let searchController = UISearchController(searchResultsController: nil)
-    var fetchedResultsController: NSFetchedResultsController<City>!
+    var fetchedResultsController: NSFetchedResultsController<Station>!
     var dataController:DataController?
  
     override func viewDidLoad()
@@ -49,16 +49,14 @@ class StationTableViewController : UIViewController,
     
     func setupFetchedResultsController()
     {
-        let fetchRequest: NSFetchRequest<City> = City.fetchRequest()
+        let fetchRequest: NSFetchRequest<Station> = Station.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                     managedObjectContext: dataController!.managedObjectContext!,
-                                                      sectionNameKeyPath: nil,
+                                                      sectionNameKeyPath:#keyPath(Station.city.name),
                                                                cacheName: nil)
         fetchedResultsController.delegate = self
     }
-    
     
     public func updateSearchResults(for searchController: UISearchController)
     {
@@ -84,24 +82,20 @@ class StationTableViewController : UIViewController,
 
     func numberOfSections(in tableView: UITableView) -> Int
     {
-        return self.fetchedResultsController.fetchedObjects!.count
+        return self.fetchedResultsController.sections!.count
     }
     
     public func tableView(_ tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int
     {
-        let cities = self.fetchedResultsController.fetchedObjects!
-        let stations = Array(cities[section].stations!)
-        
-        return stations.count;
+        return self.fetchedResultsController.sections![section].numberOfObjects
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: stattionCellId) as UITableViewCell!
-        let cities = self.fetchedResultsController.fetchedObjects!
-        let stations = Array(cities[indexPath.section].stations!)
-        let station = stations[indexPath.row] as! Station
+        let stations = self.fetchedResultsController.sections![indexPath.section].objects as! [Station]
+        let station = stations[indexPath.row]
         cell!.textLabel!.text = station.name
         
         return cell!
@@ -109,8 +103,6 @@ class StationTableViewController : UIViewController,
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
-        let cities = self.fetchedResultsController.fetchedObjects!
-        
-        return cities[section].name;
+        return self.fetchedResultsController.sections![section].name
     }
 }
