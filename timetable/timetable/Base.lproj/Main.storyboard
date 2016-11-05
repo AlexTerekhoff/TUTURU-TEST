@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IvN-v5-xNL">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IvN-v5-xNL">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,14 +8,14 @@
         <!--Station-->
         <scene sceneID="EA4-V9-4jA">
             <objects>
-                <tableViewController id="pRC-zd-uG2" customClass="StationTableViewController" customModule="timetable" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="i0H-r0-TqZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="pRC-zd-uG2" customClass="StationTableViewController" customModule="timetable" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="i0H-r0-TqZ">
+                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StationCell" textLabel="lrt-V1-YsH" style="IBUITableViewCellStyleDefault" id="TJG-1g-aqS">
-                                <rect key="frame" x="0.0" y="120" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TJG-1g-aqS" id="wNv-g1-dSb">
                                     <frame key="frameInset" width="375" height="43"/>
@@ -38,6 +37,7 @@
                             <outlet property="delegate" destination="pRC-zd-uG2" id="mE2-hP-TBc"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Station" id="Gtz-Mv-ZGm"/>
                     <connections>
@@ -69,7 +69,6 @@
         <!--Route-->
         <scene sceneID="KWC-xm-z0J">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6if-EY-hVW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="j6R-Db-ZFW" customClass="RoutePickerViewController" customModule="timetable" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wf4-iR-l7w"/>
@@ -81,7 +80,7 @@
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Tt6-Xa-5XR">
                                 <date key="date" timeIntervalSinceReferenceDate="499979887.48288602">
-                                    <!--2016-11-04 19:18:07 +0000-->
+                                    <!--2016-11-04 7:18:07 PM +0000-->
                                 </date>
                                 <locale key="locale" localeIdentifier="en_001"/>
                             </datePicker>
@@ -133,6 +132,7 @@
                     <navigationItem key="navigationItem" title="Route" id="jYi-SU-x5E"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6if-EY-hVW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2111.1999999999998" y="302.6986506746627"/>
         </scene>

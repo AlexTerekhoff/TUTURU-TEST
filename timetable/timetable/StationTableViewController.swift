@@ -11,10 +11,10 @@ import UIKit
 import CoreData
 
 class StationTableViewController : UIViewController,
-                                    UITableViewDataSource,
-                                    UITableViewDelegate,
-                                    UISearchResultsUpdating,
-                                    NSFetchedResultsControllerDelegate
+    UITableViewDataSource,
+    UITableViewDelegate,
+    UISearchResultsUpdating,
+    NSFetchedResultsControllerDelegate
 {
     let stattionCellId = "StationCell"
     
@@ -23,7 +23,7 @@ class StationTableViewController : UIViewController,
     let searchController = UISearchController(searchResultsController: nil)
     var fetchedResultsController: NSFetchedResultsController<Station>!
     var dataController:DataController?
- 
+    
     override func viewDidLoad()
     {
         dataController = DataController.sharedInstance
@@ -50,11 +50,12 @@ class StationTableViewController : UIViewController,
     func setupFetchedResultsController()
     {
         let fetchRequest: NSFetchRequest<Station> = Station.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Station.city.name), ascending: true),
+        NSSortDescriptor(key: #keyPath(Station.name), ascending: true)]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
-                                                    managedObjectContext: dataController!.managedObjectContext!,
-                                                      sectionNameKeyPath:#keyPath(Station.city.name),
-                                                               cacheName: nil)
+                                                              managedObjectContext: dataController!.managedObjectContext!,
+                                                              sectionNameKeyPath:#keyPath(Station.city.name),
+                                                              cacheName: nil)
         fetchedResultsController.delegate = self
     }
     
@@ -65,7 +66,7 @@ class StationTableViewController : UIViewController,
         {
             let searchPredicate = NSPredicate.init(format:"name contains[c] %@", searchText)
             fetchedResultsController.fetchRequest.predicate = searchPredicate
- 
+            
         }
         else
         {
@@ -74,12 +75,18 @@ class StationTableViewController : UIViewController,
         fetchData()
         tableView.reloadData()
     }
-
+    
+    private var numberOfBatchesLoaded = 0
+    
     func fetchData()
     {
         do
         {
             try self.fetchedResultsController.performFetch()
+            numberOfBatchesLoaded = 1
+            numberOfSections = 0
+            numberOfRows = 0
+            updateSections()
         }
         catch
         {
@@ -87,15 +94,53 @@ class StationTableViewController : UIViewController,
             print("\(fetchError), \(fetchError.localizedDescription)")
         }
     }
-
-    func numberOfSections(in tableView: UITableView) -> Int
-    {
+    
+    private func updateSections() {
+        tableView.beginUpdates()
+        insertNewSectionsIfNeeded()
+        tableView.endUpdates()
+    }
+    
+    private func insertNewSectionsIfNeeded() {
+        let newNumberOfSections = calculateActualNumberOfSections()
+        if newNumberOfSections > numberOfSections {
+            tableView.insertSections(IndexSet(integersIn: numberOfSections..<newNumberOfSections), with: .automatic)
+            numberOfSections = newNumberOfSections
+        }
+    }
+    
+    private var numberOfSections = 0
+    private var numberOfRows = 0
+    private static let numberOfRowsPerBatch = 25
+    
+    private func calculateActualNumberOfSections() -> Int {
+        let numberOfRowsToLoad = StationTableViewController.numberOfRowsPerBatch * numberOfBatchesLoaded
+        var eligibleNumberOfSections = numberOfSections
+        while numberOfRows <= numberOfRowsToLoad && eligibleNumberOfSections < trueNumberOfSections() {
+            numberOfRows += numberOfRows(inSection: eligibleNumberOfSections)
+            eligibleNumberOfSections += 1
+        }
+        
+        return eligibleNumberOfSections
+    }
+    
+    private func trueNumberOfSections() -> Int {
         return self.fetchedResultsController.sections!.count
     }
     
-    public func tableView(_ tableView: UITableView,
-        numberOfRowsInSection section: Int) -> Int
+    func numberOfSections(in tableView: UITableView) -> Int
     {
+        print("number of sections: \(numberOfSections)")
+        return numberOfSections
+    }
+    
+    public func tableView(_ tableView: UITableView,
+                          numberOfRowsInSection section: Int) -> Int
+    {
+        return numberOfRows(inSection: section)
+    }
+    
+    private func numberOfRows(inSection section: Int) -> Int {
         return self.fetchedResultsController.sections![section].numberOfObjects
     }
     
@@ -112,5 +157,14 @@ class StationTableViewController : UIViewController,
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
         return self.fetchedResultsController.sections![section].name
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentSize.height - scrollView.contentOffset.y - scrollView.frame.height < 50 {
+            numberOfBatchesLoaded += 1
+            tableView.beginUpdates()
+            updateSections()
+            tableView.endUpdates()
+        }
     }
 }
