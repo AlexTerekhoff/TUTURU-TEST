@@ -1,5 +1,5 @@
 //
-//  RoutePickerViewController.swift
+//  StationInfoViewController.swift
 //  timetable
 //
 //  Created by Alexander on 05/11/2016.
@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import UIKit
+import  UIKit
 
-class RoutePickerViewController: UIViewController
+class StationInfoViewController : UIViewController
 {
-
+    
 }

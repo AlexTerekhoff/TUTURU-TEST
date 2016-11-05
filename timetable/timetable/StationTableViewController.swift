@@ -109,12 +109,6 @@ class StationTableViewController : UIViewController,
         return cell!
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        let main = self.storyboard!.instantiateViewController(withIdentifier: "main")
-        navigationController?.pushViewController(main, animated: true)
-    }
-    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
         return self.fetchedResultsController.sections![section].name
