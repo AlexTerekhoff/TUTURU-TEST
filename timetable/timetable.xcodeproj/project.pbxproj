@@ -32,6 +32,7 @@
 		11652BE01DC3EDB100F79B4E /* Point+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11652BDA1DC3EDB100F79B4E /* Point+CoreDataClass.swift */; };
 		11652BE11DC3EDB100F79B4E /* Point+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11652BDB1DC3EDB100F79B4E /* Point+CoreDataProperties.swift */; };
 		11652BEF1DC51FD000F79B4E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11652BEE1DC51FD000F79B4E /* DataController.swift */; };
+		11711F9D1DCE085300D2E082 /* RoutePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11711F9C1DCE085300D2E082 /* RoutePickerViewController.swift */; };
 		11C4A6EC1DBE69F500DB103A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C4A6EB1DBE69F500DB103A /* AppDelegate.swift */; };
 		11C4A6F11DBE69F500DB103A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C4A6EF1DBE69F500DB103A /* Main.storyboard */; };
 		11C4A6F61DBE69F500DB103A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C4A6F51DBE69F500DB103A /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		11652BDA1DC3EDB100F79B4E /* Point+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Point+CoreDataClass.swift"; sourceTree = "<group>"; };
 		11652BDB1DC3EDB100F79B4E /* Point+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Point+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		11652BEE1DC51FD000F79B4E /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		11711F9C1DCE085300D2E082 /* RoutePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutePickerViewController.swift; sourceTree = "<group>"; };
 		11C4A6E81DBE69F500DB103A /* timetable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timetable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C4A6EB1DBE69F500DB103A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11C4A6F01DBE69F500DB103A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				11247C361DBF577E00557851 /* StationTableViewController.swift */,
+				11711F9C1DCE085300D2E082 /* RoutePickerViewController.swift */,
 			);
 			name = "View controllers";
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				11652BE01DC3EDB100F79B4E /* Point+CoreDataClass.swift in Sources */,
 				11652BDF1DC3EDB100F79B4E /* City+CoreDataProperties.swift in Sources */,
 				11652BDD1DC3EDB100F79B4E /* Station+CoreDataProperties.swift in Sources */,
+				11711F9D1DCE085300D2E082 /* RoutePickerViewController.swift in Sources */,
 				11652BEF1DC51FD000F79B4E /* DataController.swift in Sources */,
 				11247C371DBF577E00557851 /* StationTableViewController.swift in Sources */,
 				11C4A6EC1DBE69F500DB103A /* AppDelegate.swift in Sources */,
