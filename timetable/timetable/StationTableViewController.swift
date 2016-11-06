@@ -130,7 +130,6 @@ class StationTableViewController : UIViewController,
     
     func numberOfSections(in tableView: UITableView) -> Int
     {
-        print("number of sections: \(numberOfSections)")
         return numberOfSections
     }
     

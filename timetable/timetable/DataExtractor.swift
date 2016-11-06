@@ -105,15 +105,11 @@ class DataExtractor: NSObject
     {
         station.id = jsonDictionary["stationId"]!.int64Value
         station.name = jsonDictionary["stationTitle"] as? String
-        //let id = jsonDictionary["stationId"] as! Int64
-
-        //toEntity.setValue(id, forKeyPath: "id")
     }
     
     func extractPointFrom(dictionary:Dictionary<String, AnyObject>)
     {
-        //        let entityPoint = NSEntityDescription.insertNewObject(forEntityName:"Point",
-        //                                                                     into: managedObjectConext())
+
     }
     
     func managedObjectConext() -> NSManagedObjectContext
