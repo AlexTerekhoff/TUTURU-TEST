@@ -83,9 +83,7 @@ class StationTableViewController : UIViewController,
         do
         {
             try self.fetchedResultsController.performFetch()
-            numberOfBatchesLoaded = 1
-            numberOfSections = 0
-            numberOfRows = 0
+            deleteIrrelevantSections()
             updateSections()
         }
         catch
@@ -93,6 +91,16 @@ class StationTableViewController : UIViewController,
             let fetchError = error as NSError
             print("\(fetchError), \(fetchError.localizedDescription)")
         }
+    }
+    
+    private func deleteIrrelevantSections()
+    {
+        tableView.beginUpdates()
+        tableView.deleteSections(IndexSet(integersIn: 0..<numberOfSections), with: .automatic)
+        numberOfBatchesLoaded = 1
+        numberOfSections = 0
+        numberOfRows = 0
+        tableView.endUpdates()
     }
     
     private func updateSections() {
@@ -161,9 +169,7 @@ class StationTableViewController : UIViewController,
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentSize.height - scrollView.contentOffset.y - scrollView.frame.height < 50 {
             numberOfBatchesLoaded += 1
-            tableView.beginUpdates()
             updateSections()
-            tableView.endUpdates()
         }
     }
 }
