@@ -10,12 +10,18 @@ import Foundation
 import UIKit
 import CoreData
 
+protocol DestinationViewControllerDelegate {
+    func doSomethingWithData(data: String)
+}
+
 class StationTableViewController : UIViewController,
     UITableViewDataSource,
     UITableViewDelegate,
     UISearchResultsUpdating,
     NSFetchedResultsControllerDelegate
 {
+    var delegate: DestinationViewControllerDelegate?
+    
     let stattionCellId = "StationCell"
     
     @IBOutlet var tableView: UITableView!
@@ -171,5 +177,14 @@ class StationTableViewController : UIViewController,
             numberOfBatchesLoaded += 1
             updateSections()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let stations = self.fetchedResultsController.sections![indexPath.section].objects as! [Station]
+        let station = stations[indexPath.row]
+        delegate!.doSomethingWithData(data: station.name!)
+        print(station.name)
+        navigationController?.popViewController(animated: true)
     }
 }

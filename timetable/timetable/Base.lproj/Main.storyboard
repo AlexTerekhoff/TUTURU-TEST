@@ -131,6 +131,10 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Route" id="jYi-SU-x5E"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="departure" destination="pcL-Ve-M0O" id="iko-9B-b9h"/>
+                        <outlet property="destination" destination="Lnd-5v-jtz" id="fA8-iT-mkH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6if-EY-hVW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
