@@ -11,5 +11,12 @@ import  UIKit
 
 class StationInfoViewController : UIViewController
 {
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var address: UILabel!
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+    }
     
 }

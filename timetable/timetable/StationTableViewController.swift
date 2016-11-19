@@ -11,7 +11,8 @@ import UIKit
 import CoreData
 
 protocol DestinationViewControllerDelegate {
-    func doSomethingWithData(data: String)
+    func updateDeparture(station: Station)
+    func updateDestination(station: Station)
 }
 
 class StationTableViewController : UIViewController,
@@ -160,6 +161,7 @@ class StationTableViewController : UIViewController,
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: stattionCellId) as UITableViewCell!
+        cell?.accessoryType = .detailDisclosureButton
         let stations = self.fetchedResultsController.sections![indexPath.section].objects as! [Station]
         let station = stations[indexPath.row]
         cell!.textLabel!.text = station.name
@@ -183,8 +185,16 @@ class StationTableViewController : UIViewController,
     {
         let stations = self.fetchedResultsController.sections![indexPath.section].objects as! [Station]
         let station = stations[indexPath.row]
-        delegate!.doSomethingWithData(data: station.name!)
-        print(station.name)
-        navigationController?.popViewController(animated: true)
+        
+        delegate!.updateDeparture(station:station)
+        delegate!.updateDestination(station: station)
+        
+        navigationController!.popViewController(animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "StationInfo") as! StationInfoViewController
+        vc.address.text = "adress"
+        navigationController!.pushViewController(vc, animated: true)
     }
 }

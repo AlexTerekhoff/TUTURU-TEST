@@ -1,10 +1,12 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9j5-wU-KVd">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9j5-wU-KVd">
+=======
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IvN-v5-xNL">
+>>>>>>> ilya
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,7 +14,7 @@
         <scene sceneID="EA4-V9-4jA">
             <objects>
                 <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="pRC-zd-uG2" customClass="StationTableViewController" customModule="timetable" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="i0H-r0-TqZ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="i0H-r0-TqZ">
                         <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -21,11 +23,11 @@
                                 <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TJG-1g-aqS" id="wNv-g1-dSb">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lrt-V1-YsH">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                            <frame key="frameInset" minX="15" width="345" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -51,10 +53,10 @@
             </objects>
             <point key="canvasLocation" x="2815.1999999999998" y="302.6986506746627"/>
         </scene>
-        <!--Station info-->
+        <!--Station Info View Controller-->
         <scene sceneID="Tjs-yB-vvZ">
             <objects>
-                <viewController storyboardIdentifier="StationInfo" title="Station info" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KIc-Db-xHb" customClass="StationInfoViewController" customModule="timetable" sceneMemberID="viewController">
+                <viewController id="KIc-Db-xHb" customClass="StationInfoViewController" customModule="timetable" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pkb-ph-nZu"/>
                         <viewControllerLayoutGuide type="bottom" id="ULj-27-E2h"/>
@@ -62,35 +64,8 @@
                     <view key="view" contentMode="scaleToFill" id="d0d-4D-Xvz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVf-zm-mGf">
-                                <rect key="frame" x="25" y="102" width="334" height="25"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Adress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ln-nP-Dfz">
-                                <rect key="frame" x="25" y="158" width="334" height="25"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="9ln-nP-Dfz" secondAttribute="trailing" constant="16" id="6CW-fh-7Os"/>
-                            <constraint firstItem="9ln-nP-Dfz" firstAttribute="leading" secondItem="d0d-4D-Xvz" secondAttribute="leading" constant="25" id="Apm-uz-v3P"/>
-                            <constraint firstAttribute="trailing" secondItem="SVf-zm-mGf" secondAttribute="trailing" constant="16" id="Dow-YS-xgp"/>
-                            <constraint firstItem="SVf-zm-mGf" firstAttribute="top" secondItem="Pkb-ph-nZu" secondAttribute="bottom" constant="38" id="UKv-GI-D9E"/>
-                            <constraint firstItem="SVf-zm-mGf" firstAttribute="leading" secondItem="d0d-4D-Xvz" secondAttribute="leading" constant="25" id="UpC-ft-5IF"/>
-                            <constraint firstItem="9ln-nP-Dfz" firstAttribute="top" secondItem="SVf-zm-mGf" secondAttribute="bottom" constant="31" id="uVh-jt-zKf"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Station info" id="f6i-jN-vON"/>
-                    <connections>
-                        <outlet property="address" destination="9ln-nP-Dfz" id="oMz-GC-0jV"/>
-                        <outlet property="name" destination="SVf-zm-mGf" id="IFp-UV-2sc"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I7u-f5-7Ch" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -109,17 +84,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Tt6-Xa-5XR">
-                                <rect key="frame" x="20" y="375" width="335" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="499979887.48288602">
-                                    <!--2016-11-04 19:18:07 +0000-->
+                                    <!--2016-11-04 7:18:07 PM +0000-->
                                 </date>
                                 <locale key="locale" localeIdentifier="en_001"/>
-                                <connections>
-                                    <action selector="datePickerAction:" destination="j6R-Db-ZFW" eventType="valueChanged" id="CMq-Rm-pLT"/>
-                                </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKt-L1-WRh">
-                                <rect key="frame" x="20" y="176" width="335" height="36"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
                                 <state key="normal" title="Pick departure"/>
                                 <connections>
@@ -127,7 +97,6 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fhl-Cl-PMp">
-                                <rect key="frame" x="20" y="275.5" width="335" height="36"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
                                 <state key="normal" title="Pick destination"/>
                                 <connections>
@@ -135,13 +104,11 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No station" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lnd-5v-jtz">
-                                <rect key="frame" x="20" y="319.5" width="335" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No station" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcL-Ve-M0O">
-                                <rect key="frame" x="20" y="220" width="335" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -169,17 +136,12 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Route" id="jYi-SU-x5E"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="datePicker" destination="Tt6-Xa-5XR" id="q4c-DY-tcO"/>
-                        <outlet property="departure" destination="pcL-Ve-M0O" id="iko-9B-b9h"/>
-                        <outlet property="destination" destination="Lnd-5v-jtz" id="fA8-iT-mkH"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6if-EY-hVW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2111.1999999999998" y="302.6986506746627"/>
         </scene>
-        <!--View Controller-->
+        <!--Item-->
         <scene sceneID="Plw-YE-gpI">
             <objects>
                 <viewController id="mcM-Co-zcc" sceneMemberID="viewController">
@@ -192,7 +154,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="О приложении" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDR-9t-m3N">
-                                <rect key="frame" x="115.5" y="322" width="144.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -204,7 +165,7 @@
                             <constraint firstItem="eDR-9t-m3N" firstAttribute="centerY" secondItem="LZo-aU-Zqw" secondAttribute="centerY" id="bLe-4i-jLk"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="more" id="U9d-JZ-E3c"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="U9d-JZ-E3c"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3h7-BB-b89" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -228,11 +189,11 @@
             </objects>
             <point key="canvasLocation" x="449" y="652"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="pNu-k0-o0A">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="IvN-v5-xNL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="ebe-ND-m4f"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="ebe-ND-m4f"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ama-kF-EWP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -244,8 +205,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="j6R-Db-ZFW" kind="relationship" relationship="rootViewController" id="uLX-6e-6yG"/>
-                        <segue destination="KIc-Db-xHb" kind="push" id="dNa-rk-DsS"/>
+                        <segue destination="j6R-Db-ZFW" kind="relationship" relationship="rootViewController" id="Cu4-1S-nRL"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kLY-8n-Eud" userLabel="First Responder" sceneMemberID="firstResponder"/>
