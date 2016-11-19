@@ -194,7 +194,9 @@ class StationTableViewController : UIViewController,
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "StationInfo") as! StationInfoViewController
-        vc.address.text = "adress"
+        let stations = self.fetchedResultsController.sections![indexPath.section].objects as! [Station]
+        let station = stations[indexPath.row]
+        vc.station = station
         navigationController!.pushViewController(vc, animated: true)
     }
 }
