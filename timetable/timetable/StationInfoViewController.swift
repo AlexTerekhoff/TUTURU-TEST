@@ -16,10 +16,16 @@ class StationInfoViewController : UIViewController
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var address: UILabel!
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         name.text = station!.name
+        address.text = obtainAddressData()
     }
     
+    func obtainAddressData () -> String {
+        var address = ""
+        address = station!.city!.name! + "\n\n" + station!.city!.region! + "\n\n" + station!.city!.country!
+        
+        return address
+    }
 }

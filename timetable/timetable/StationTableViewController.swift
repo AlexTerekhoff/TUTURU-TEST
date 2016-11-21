@@ -23,6 +23,8 @@ class StationTableViewController : UIViewController,
 {
     var delegate: DestinationViewControllerDelegate?
     
+    var isDepartureCity:Bool?
+    
     let stattionCellId = "StationCell"
     
     @IBOutlet var tableView: UITableView!
@@ -185,10 +187,12 @@ class StationTableViewController : UIViewController,
     {
         let stations = self.fetchedResultsController.sections![indexPath.section].objects as! [Station]
         let station = stations[indexPath.row]
-        
-        delegate!.updateDeparture(station:station)
-        delegate!.updateDestination(station: station)
-        
+        if isDepartureCity! {
+           delegate!.updateDeparture(station:station)
+        }
+        else {
+           delegate!.updateDestination(station: station)
+        }
         navigationController!.popViewController(animated: true)
     }
     

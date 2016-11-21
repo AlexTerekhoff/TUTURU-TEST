@@ -13,10 +13,15 @@ class RoutePickerViewController: UIViewController, DestinationViewControllerDele
 {
     @IBOutlet weak var departure: UILabel!
     @IBOutlet weak var destination: UILabel!
+    @IBOutlet weak var date: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
+    
+    var destinationViewController:StationTableViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        destinationViewController  = self.storyboard?.instantiateViewController(withIdentifier: "StationsTable") as? StationTableViewController
+        destinationViewController!.delegate = self
     }
     
     func updateDeparture(station: Station) {
@@ -30,10 +35,13 @@ class RoutePickerViewController: UIViewController, DestinationViewControllerDele
         print(datePicker.date)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationViewController = segue.destination as? StationTableViewController {
-            destinationViewController.delegate = self
-        }
+    @IBAction func presentDepartureStationTableViewController (_ sender: AnyObject) {
+        destinationViewController!.isDepartureCity = true
+         navigationController!.pushViewController(destinationViewController!, animated: true)
     }
-
+    
+    @IBAction func presentDestinationStationTableViewController (_ sender: AnyObject) {
+        destinationViewController!.isDepartureCity = false
+        navigationController!.pushViewController(destinationViewController!, animated: true)
+    }
 }
