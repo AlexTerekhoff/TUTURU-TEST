@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>timetable Dev.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>timetable.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -22,7 +27,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>119E2C8F1DE3059D00DC162F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>119E2CA81DE3060D00DC162F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>119E2CBE1DE3065600DC162F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>11C4A6E71DBE69F400DB103A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>11D1A7241DE5A15F004465D0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

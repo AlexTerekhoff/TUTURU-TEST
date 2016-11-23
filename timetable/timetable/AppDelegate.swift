@@ -18,6 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         let dataExtractor = DataExtractor()
         //dataExtractor.uploadDataFromJSONDataStore()
+        
+        #if DEVELOPMENT
+            print("dev")
+        #else
+            print("no dev")
+        #endif
         return true
     }
 

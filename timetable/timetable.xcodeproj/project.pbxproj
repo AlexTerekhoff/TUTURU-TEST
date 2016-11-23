@@ -37,6 +37,23 @@
 		11C4A6F11DBE69F500DB103A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C4A6EF1DBE69F500DB103A /* Main.storyboard */; };
 		11C4A6F61DBE69F500DB103A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C4A6F51DBE69F500DB103A /* Assets.xcassets */; };
 		11C4A6F91DBE69F500DB103A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C4A6F71DBE69F500DB103A /* LaunchScreen.storyboard */; };
+		11D1A7261DE5A15F004465D0 /* City+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11652BD81DC3EDB100F79B4E /* City+CoreDataClass.swift */; };
+		11D1A7271DE5A15F004465D0 /* Station+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11652BD61DC3EDB100F79B4E /* Station+CoreDataClass.swift */; };
+		11D1A7281DE5A15F004465D0 /* DataExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111F40331DC76A7300C2C909 /* DataExtractor.swift */; };
+		11D1A7291DE5A15F004465D0 /* StationInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E5E8C41DCE1725004AEC3E /* StationInfoViewController.swift */; };
+		11D1A72A1DE5A15F004465D0 /* Point+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11652BDA1DC3EDB100F79B4E /* Point+CoreDataClass.swift */; };
+		11D1A72B1DE5A15F004465D0 /* City+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11652BD91DC3EDB100F79B4E /* City+CoreDataProperties.swift */; };
+		11D1A72C1DE5A15F004465D0 /* Station+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11652BD71DC3EDB100F79B4E /* Station+CoreDataProperties.swift */; };
+		11D1A72D1DE5A15F004465D0 /* RoutePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11711F9C1DCE085300D2E082 /* RoutePickerViewController.swift */; };
+		11D1A72E1DE5A15F004465D0 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11652BEE1DC51FD000F79B4E /* DataController.swift */; };
+		11D1A72F1DE5A15F004465D0 /* StationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11247C361DBF577E00557851 /* StationTableViewController.swift */; };
+		11D1A7301DE5A15F004465D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C4A6EB1DBE69F500DB103A /* AppDelegate.swift */; };
+		11D1A7311DE5A15F004465D0 /* Point+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11652BDB1DC3EDB100F79B4E /* Point+CoreDataProperties.swift */; };
+		11D1A7321DE5A15F004465D0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11247C4B1DBFD4BE00557851 /* Model.xcdatamodeld */; };
+		11D1A7351DE5A15F004465D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C4A6F71DBE69F500DB103A /* LaunchScreen.storyboard */; };
+		11D1A7361DE5A15F004465D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C4A6F51DBE69F500DB103A /* Assets.xcassets */; };
+		11D1A7371DE5A15F004465D0 /* allStations.json in Resources */ = {isa = PBXBuildFile; fileRef = 11247C391DBF5CE600557851 /* allStations.json */; };
+		11D1A7381DE5A15F004465D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C4A6EF1DBE69F500DB103A /* Main.storyboard */; };
 		11E5E8C51DCE1725004AEC3E /* StationInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E5E8C41DCE1725004AEC3E /* StationInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,11 +76,20 @@
 		11C4A6F51DBE69F500DB103A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11C4A6F81DBE69F500DB103A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11C4A6FA1DBE69F500DB103A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11D1A73C1DE5A15F004465D0 /* timetable Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "timetable Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		11D1A73D1DE5A15F004465D0 /* timetable Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "timetable Dev-Info.plist"; path = "/Users/AlexanderTerekh/Documents/Repositories/GitHub/TUTURU-TEST/timetable/timetable Dev-Info.plist"; sourceTree = "<absolute>"; };
 		11E5E8C41DCE1725004AEC3E /* StationInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		11C4A6E51DBE69F400DB103A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11D1A7331DE5A15F004465D0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -164,6 +190,7 @@
 			children = (
 				11C4A6EA1DBE69F500DB103A /* timetable */,
 				11C4A6E91DBE69F500DB103A /* Products */,
+				11D1A73D1DE5A15F004465D0 /* timetable Dev-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				11C4A6E81DBE69F500DB103A /* timetable.app */,
+				11D1A73C1DE5A15F004465D0 /* timetable Dev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -206,13 +234,30 @@
 			productReference = 11C4A6E81DBE69F500DB103A /* timetable.app */;
 			productType = "com.apple.product-type.application";
 		};
+		11D1A7241DE5A15F004465D0 /* timetable Dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 11D1A7391DE5A15F004465D0 /* Build configuration list for PBXNativeTarget "timetable Dev" */;
+			buildPhases = (
+				11D1A7251DE5A15F004465D0 /* Sources */,
+				11D1A7331DE5A15F004465D0 /* Frameworks */,
+				11D1A7341DE5A15F004465D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "timetable Dev";
+			productName = timetable;
+			productReference = 11D1A73C1DE5A15F004465D0 /* timetable Dev.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		11C4A6E01DBE69F400DB103A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Alexander Terekhov";
 				TargetAttributes = {
@@ -225,6 +270,9 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = U754XV4Y2S;
 						ProvisioningStyle = Automatic;
+					};
+					11D1A7241DE5A15F004465D0 = {
+						DevelopmentTeam = U754XV4Y2S;
 					};
 				};
 			};
@@ -243,6 +291,7 @@
 			targets = (
 				11C4A6E71DBE69F400DB103A /* timetable */,
 				11247C3E1DBFB7BF00557851 /* Mogenerator */,
+				11D1A7241DE5A15F004465D0 /* timetable Dev */,
 			);
 		};
 /* End PBXProject section */
@@ -256,6 +305,17 @@
 				11C4A6F61DBE69F500DB103A /* Assets.xcassets in Resources */,
 				11247C3A1DBF5CE600557851 /* allStations.json in Resources */,
 				11C4A6F11DBE69F500DB103A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11D1A7341DE5A15F004465D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11D1A7351DE5A15F004465D0 /* LaunchScreen.storyboard in Resources */,
+				11D1A7361DE5A15F004465D0 /* Assets.xcassets in Resources */,
+				11D1A7371DE5A15F004465D0 /* allStations.json in Resources */,
+				11D1A7381DE5A15F004465D0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +355,26 @@
 				11C4A6EC1DBE69F500DB103A /* AppDelegate.swift in Sources */,
 				11652BE11DC3EDB100F79B4E /* Point+CoreDataProperties.swift in Sources */,
 				11247C4D1DBFD4BE00557851 /* Model.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11D1A7251DE5A15F004465D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11D1A7261DE5A15F004465D0 /* City+CoreDataClass.swift in Sources */,
+				11D1A7271DE5A15F004465D0 /* Station+CoreDataClass.swift in Sources */,
+				11D1A7281DE5A15F004465D0 /* DataExtractor.swift in Sources */,
+				11D1A7291DE5A15F004465D0 /* StationInfoViewController.swift in Sources */,
+				11D1A72A1DE5A15F004465D0 /* Point+CoreDataClass.swift in Sources */,
+				11D1A72B1DE5A15F004465D0 /* City+CoreDataProperties.swift in Sources */,
+				11D1A72C1DE5A15F004465D0 /* Station+CoreDataProperties.swift in Sources */,
+				11D1A72D1DE5A15F004465D0 /* RoutePickerViewController.swift in Sources */,
+				11D1A72E1DE5A15F004465D0 /* DataController.swift in Sources */,
+				11D1A72F1DE5A15F004465D0 /* StationTableViewController.swift in Sources */,
+				11D1A7301DE5A15F004465D0 /* AppDelegate.swift in Sources */,
+				11D1A7311DE5A15F004465D0 /* Point+CoreDataProperties.swift in Sources */,
+				11D1A7321DE5A15F004465D0 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +537,36 @@
 			};
 			name = Release;
 		};
+		11D1A73A1DE5A15F004465D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = U754XV4Y2S;
+				INFOPLIST_FILE = "timetable Dev-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_SWIFT_FLAGS[sdk=*]" = "-DDEVELOPMENT";
+				PRODUCT_BUNDLE_IDENTIFIER = EasyGuys.timetable;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		11D1A73B1DE5A15F004465D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = U754XV4Y2S;
+				INFOPLIST_FILE = "timetable Dev-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-DDEVELOPMENT";
+				PRODUCT_BUNDLE_IDENTIFIER = EasyGuys.timetable;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -483,6 +593,15 @@
 			buildConfigurations = (
 				11C4A6FE1DBE69F500DB103A /* Debug */,
 				11C4A6FF1DBE69F500DB103A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		11D1A7391DE5A15F004465D0 /* Build configuration list for PBXNativeTarget "timetable Dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11D1A73A1DE5A15F004465D0 /* Debug */,
+				11D1A73B1DE5A15F004465D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
