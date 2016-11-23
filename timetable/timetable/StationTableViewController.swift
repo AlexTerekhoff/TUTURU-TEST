@@ -27,8 +27,7 @@ class StationTableViewController : UIViewController,
     
     let stattionCellId = "StationCell"
     
-    @IBOutlet var tableView: UITableView!
-    
+    @IBOutlet weak var tableView: UITableView!
     
     let searchController = UISearchController(searchResultsController: nil)
     var fetchedResultsController: NSFetchedResultsController<Station>!
@@ -49,13 +48,13 @@ class StationTableViewController : UIViewController,
     
     override func viewDidAppear(_ animated: Bool) {
         
-        tableView.reloadData()
+        //tableView.reloadData()
         
     }
     
     func setup()
     {
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: stattionCellId)
+        //self.tableView.register(StationCell.self, forCellReuseIdentifier: stattionCellId)
         setupSearchController()
     }
     
@@ -173,13 +172,14 @@ class StationTableViewController : UIViewController,
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: stattionCellId) as UITableViewCell!
-        cell?.accessoryType = .detailDisclosureButton
+        let cell = tableView.dequeueReusableCell(withIdentifier: stattionCellId) as! StationCell
+        cell.accessoryType = .detailDisclosureButton
         let stations = self.fetchedResultsController.sections![indexPath.section].objects as! [Station]
         let station = stations[indexPath.row]
-        cell!.textLabel!.text = station.name
+        cell.stationName.text = station.name!
         
-        return cell!
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?

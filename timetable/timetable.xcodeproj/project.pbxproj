@@ -54,6 +54,7 @@
 		11D1A7361DE5A15F004465D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C4A6F51DBE69F500DB103A /* Assets.xcassets */; };
 		11D1A7371DE5A15F004465D0 /* allStations.json in Resources */ = {isa = PBXBuildFile; fileRef = 11247C391DBF5CE600557851 /* allStations.json */; };
 		11D1A7381DE5A15F004465D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C4A6EF1DBE69F500DB103A /* Main.storyboard */; };
+		11D1A73F1DE5B090004465D0 /* StationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D1A73E1DE5B090004465D0 /* StationCell.swift */; };
 		11E5E8C51DCE1725004AEC3E /* StationInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E5E8C41DCE1725004AEC3E /* StationInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		11C4A6FA1DBE69F500DB103A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11D1A73C1DE5A15F004465D0 /* timetable Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "timetable Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11D1A73D1DE5A15F004465D0 /* timetable Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "timetable Dev-Info.plist"; path = "/Users/AlexanderTerekh/Documents/Repositories/GitHub/TUTURU-TEST/timetable/timetable Dev-Info.plist"; sourceTree = "<absolute>"; };
+		11D1A73E1DE5B090004465D0 /* StationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationCell.swift; sourceTree = "<group>"; };
 		11E5E8C41DCE1725004AEC3E /* StationInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 				11247C361DBF577E00557851 /* StationTableViewController.swift */,
 				11711F9C1DCE085300D2E082 /* RoutePickerViewController.swift */,
 				11E5E8C41DCE1725004AEC3E /* StationInfoViewController.swift */,
+				11D1A73E1DE5B090004465D0 /* StationCell.swift */,
 			);
 			name = "View controllers";
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 			files = (
 				11652BDE1DC3EDB100F79B4E /* City+CoreDataClass.swift in Sources */,
 				11652BDC1DC3EDB100F79B4E /* Station+CoreDataClass.swift in Sources */,
+				11D1A73F1DE5B090004465D0 /* StationCell.swift in Sources */,
 				111F40341DC76A7300C2C909 /* DataExtractor.swift in Sources */,
 				11E5E8C51DCE1725004AEC3E /* StationInfoViewController.swift in Sources */,
 				11652BE01DC3EDB100F79B4E /* Point+CoreDataClass.swift in Sources */,
