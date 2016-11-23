@@ -29,6 +29,7 @@ class StationTableViewController : UIViewController,
     
     @IBOutlet var tableView: UITableView!
     
+    
     let searchController = UISearchController(searchResultsController: nil)
     var fetchedResultsController: NSFetchedResultsController<Station>!
     var dataController:DataController?
@@ -39,7 +40,17 @@ class StationTableViewController : UIViewController,
         setupFetchedResultsController()
         fetchData()
         super.viewDidLoad()
+        
+        tableView.estimatedRowHeight = 68.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         setup()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        tableView.reloadData()
+        
     }
     
     func setup()
